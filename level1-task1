@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lingam Venkata Sai | Portfolio</title>
+  <style>
+    body { font-family: italic, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; line-height: 1.6; }
+    header, footer { background-color: #222; color: #fff; text-align: center; padding: 20px 0; }
+    nav a { margin: 0 15px; color: #fff; text-decoration: none; }
+    .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px; }
+    h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    .about-img { width: 150px; border-radius: 100%; float: left; margin-right: 20px; }
+    .skills ul, .projects { list-style: none; padding: 0; }
+    .skills li { display: inline-block; background: #e2e2e2; margin: 5px; padding: 10px 15px; border-radius: 5px; }
+    .project { margin-bottom: 20px; }
+    .project img { width: 100%; max-width: 400px; height: auto; }
+    .resume a { color: #007BFF; text-decoration: none; }
+    .contact p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Lingam Venkata Sai</h1>
+    <p>Software Developer | Problem Solver | Tech Enthusiast</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- About Section -->
+<section id="about">
+  <h2>About Me</h2>
+  <img src="image.jpg" alt="image" class="about-img" />
+  <p>
+    Hello! I'm <strong>Lingam Venkata Sai</strong>, a passionate software developer with experience in building full-stack web applications.
+    I enjoy solving problems and continuously improving my technical skills in technologies like React.js, Node.js, and MongoDB.
+  </p>
+</section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML & CSS</li>
+        <li>JavaScript</li>
+        <li>React.js</li>
+        <li>Java</li>
+        <li>Node.js</li>
+        <li>SQL</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <img src="C:\Users\venkat sai\OneDrive\Pictures\Screenshots\Screenshot 2025-08-16 155435.png" alt="Portfolio Website" />
+        <p>A personal website built using HTML, CSS, and JavaScript to showcase my skills and projects.</p>
+      </div>
+
+      <div class="project">
+        <h3>Task Manager App</h3>
+        <img src="simple basic calculator.png" alt="Task Manager App" />
+        <p>A simple basic calculator using java html code.</p>
+      </div>
+
+      <!-- Add more projects as needed -->
+    </section>
+
+<section id="resume" class="resume">
+  <h2>Resume</h2>
+  <p>You can download my resume here:</p>
+  <a href="https://raw.githubusercontent.com/venkatsaidotcom/codsoft/main/resume%20(1).pdf" download>
+   Download Resume (PDF)
+  </a>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Email: venkatsai1410@gmail.com </p>
+      <p>Phone: +91-90598-62646</p>
+      <!-- Optional: LinkedIn, GitHub -->
+      <p>LinkedIn: 
+        <a href="https://www.linkedin.com/in/venkata-sai-lingam-6747672aa" target="_blank">
+          linkedin.com/in/venkata-sai-lingam-6747672aa
+        </a>
+      </p>
+      <!-- <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p> -->
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Lingam Venkata Sai. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
