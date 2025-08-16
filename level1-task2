@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>simple basic calculator</title>
+  <style>
+    /* Opposite background: website bg is light blue (#e3f0fc), so heading bg is dark */
+    body {
+      background-color: #c0c8ce;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    .heading-box {
+      width: 350px;
+      background-color: #4186a6; /* dark navy */
+      color: #f2f3f4; /* light text to contrast */
+      font-size: 1.8em;
+      font-weight: 750;
+      text-align: center;
+      padding: 14px 14px;
+      border-radius: 14px 14px 14px 14px;
+      box-shadow: 0 5px 12px rgba(203, 148, 148, 0.2);
+      user-select: none;
+      margin-bottom: 10px;
+    }
+
+    .calculator-container {
+      display: flex;
+      background: #9c7878;
+      border-radius: 25px 25px 25px 25px;
+      box-shadow: 0 40px 40px rgba(0,0,0,0.1);
+      padding: 30px 30px;
+      min-width: 400px;
+    }
+    .numbers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 40px;
+      padding-right: 10px;
+      border-right: 2px solid #4f1010;
+    }
+    .history-box {
+      width: 240px;
+      height: 40px;
+      background: #f1f3f4;
+      border-radius: 20px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+      overflow-y: auto;
+      font-size: 0.5em;
+      margin-bottom: 22px;
+      padding: 8px 12px;
+      color: #000000;
+      line-height: 1.3em;
+      white-space: pre-wrap;
+      user-select: none;
+    }
+    .clear-history-btn {
+      margin-bottom: 10px;
+      padding: 6px 12px;
+      border: none;
+      background-color: #119bd5;
+      color: rgb(61, 51, 51);
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      align-self: flex-end;
+      user-select: none;
+    }
+    .clear-history-btn:hover {
+      background-color: #8d3737;
+    }
+    .display {
+      width: 200px;
+      height: 45px;
+      background: #f8fafc;
+      border-radius: 30px;
+      font-size: 2em;
+      text-align: right;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      pointer-events: none;
+      color: #333;
+      font-weight: 600;
+      overflow-x: auto;
+      user-select: text;
+      white-space: nowrap;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 52px);
+      grid-gap: 15px;
+    }
+    .number-btn {
+      width: 52px;
+      height: 52px;
+      background: #e2e8f0;
+      margin: 55;
+      font-size: 1.9em;
+      border-radius: 18px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.55s;
+      user-select: none;
+    }
+    .number-btn:hover {
+      background: #b6d5fa;
+    }
+    .operators {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 0px;
+      height: 400px; /* to space out buttons nicely */
+    }
+    .op-btn {
+      width: 60px;
+      height: 190px;
+      background: #095c82;
+      border-radius: 50%;
+      border: none;
+      color: #d3cece;
+      font-size: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 20px 80px rgba(49, 136, 157, 0.15);
+      transition: background 0.15s;
+      user-select: none;
+      margin-bottom: 10px;
+    }
+    .op-btn.clear-op-btn {
+      background: #295263;
+      font-weight: 700;
+    }
+    .op-btn.clear-op-btn:hover {
+      background: #801010;
+      font-weight: 400
+    }
+    .op-btn.equal-btn {
+      background: rgba(80, 155, 175, 0.15);
+      margin-bottom: 20px;
+    }
+    .op-btn.equal-btn:hover {
+      background: #108048;
+    }
+    .op-btn.del-op-btn {
+      background: #307963;
+      margin-bottom: 0px;
+    }
+    .op-btn.del-op-btn:hover {
+      background: #894101;
+    }
+  </style>
+</head>
+<body>
+  <div class="heading-box">Simple Basic Calculator</div>
+
+  <div class="calculator-container">
+    <div class="numbers">
+      <div class="history-box" id="history"></div>
+      <button class="clear-history-btn" onclick="clearHistory()">Clear History</button>
+      <input type="text" class="display" id="display" readonly />
+      <div class="grid">
+        <button class="number-btn" onclick="appendNumber('7')">7</button>
+        <button class="number-btn" onclick="appendNumber('8')">8</button>
+        <button class="number-btn" onclick="appendNumber('9')">9</button>
+        <button class="number-btn" onclick="appendNumber('4')">4</button>
+        <button class="number-btn" onclick="appendNumber('5')">5</button>
+        <button class="number-btn" onclick="appendNumber('6')">6</button>
+        <button class="number-btn" onclick="appendNumber('1')">1</button>
+        <button class="number-btn" onclick="appendNumber('2')">2</button>
+        <button class="number-btn" onclick="appendNumber('3')">3</button>
+        <button class="number-btn" onclick="appendNumber('0')">0</button>
+        <button class="number-btn" onclick="appendNumber('.')">.</button>
+      </div>
+    </div>
+    <div class="operators">
+      <button class="op-btn clear-op-btn" onclick="clearDisplay()">C</button>
+      <button class="op-btn" onclick="chooseOperator('+')">+</button>
+      <button class="op-btn" onclick="chooseOperator('-')">-</button>
+      <button class="op-btn" onclick="chooseOperator('*')">&times;</button>
+      <button class="op-btn" onclick="chooseOperator('/')">&divide;</button>
+      <button class="op-btn equal-btn" onclick="calculate()">=</button>
+      <button class="op-btn del-op-btn" onclick="deleteLast()">DEL</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    const historyBox = document.getElementById('history');
+    let current = '';
+    let operator = '';
+    let prev = '';
+    let showingResult = false;
+    let history = [];
+
+    function appendNumber(num) {
+      if (showingResult) {
+        current = '';
+        showingResult = false;
+      }
+      // Prevent multiple '.' in a number
+      if (num === '.' && current.includes('.')) return;
+      current += num;
+      updateDisplay();
+    }
+
+    function clearDisplay() {
+      current = '';
+      prev = '';
+      operator = '';
+      showingResult = false;
+      updateDisplay();
+    }
+
+    function deleteLast() {
+      if (showingResult) {
+        // If result is showing, clear everything on DEL press
+        clearDisplay();
+        return;
+      }
+      if (current.length > 0) {
+        current = current.slice(0, -1);
+        updateDisplay();
+      } else if (operator) {
+        // Delete the operator if no current number
+        operator = '';
+        current = prev;
+        prev = '';
+        updateDisplay();
+      }
+      // else nothing to delete
+    }
+
+    function chooseOperator(op) {
+      if (current === '') return;
+      if (prev !== '') calculate();
+      operator = op;
+      prev = current;
+      current = '';
+      updateDisplay();
+    }
+
+    function calculate() {
+      if (operator === '' || current === '') return;
+      let result;
+      let n1 = parseFloat(prev);
+      let n2 = parseFloat(current);
+      switch(operator) {
+        case '+': result = n1 + n2; break;
+        case '-': result = n1 - n2; break;
+        case '*': result = n1 * n2; break;
+        case '/': result = n2 !== 0 ? n1 / n2 : 'Error'; break;
+        default: return;
+      }
+      const expression = `${prev} ${operator} ${current} = ${result}`;
+      display.value = expression;
+      addHistory(expression);
+      current = result.toString();
+      operator = '';
+      prev = '';
+      showingResult = true;
+    }
+
+    function updateDisplay() {
+      if (operator) {
+        display.value = `${prev} ${operator} ${current}`;
+      } else {
+        display.value = current;
+      }
+    }
+
+    function addHistory(entry) {
+      if (entry === 'Error') return; // don't add error results to history
+      history.unshift(entry);
+      if (history.length > 8) history.pop(); // max 8 history lines
+      historyBox.textContent = history.join('\n');
+    }
+
+    function clearHistory() {
+      history = [];
+      historyBox.textContent = '';
+    }
+  </script>
+</body>
+</html>
